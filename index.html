@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameFlux — Live Sports</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"><div id="cursor-dot"></div></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <canvas id="loader-canvas"></canvas>
+  </div>
+
+  <!-- Three.js Full-Screen Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav id="top-nav">
+    <div class="nav-logo">GF</div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-sport="all">ALL</button>
+      <button class="nav-tab" data-sport="cricket">CRICKET</button>
+      <button class="nav-tab" data-sport="football">FOOTBALL</button>
+      <button class="nav-tab" data-sport="table" id="table-tab">🏆 TABLE</button>
+    </div>
+    <div class="nav-right">
+      <span class="live-pill pulse">● LIVE</span>
+      <span id="live-count">0</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="app">
+
+    <!-- Hero -->
+    <section id="hero">
+      <div class="hero-eyebrow" id="hero-eyebrow">LIVE NOW</div>
+      <h1 class="hero-title">
+        Watch Sports<br/><span class="hero-accent">Live &amp; Replays</span>
+      </h1>
+      <p class="hero-sub">Cricket &middot; Football &middot; Live Scores &middot; Highlights</p>
+
+      <!-- Filters -->
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="live">●&nbsp;LIVE</button>
+        <button class="filter-btn" data-filter="upcoming">▷&nbsp;UPCOMING</button>
+        <button class="filter-btn" data-filter="past">⏯&nbsp;REPLAYS</button>
+      </div>
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input id="search-input" type="text" placeholder="Search teams, tournaments…" autocomplete="off" />
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section id="events-section">
+      <div class="section-header">
+        <h2 class="section-title" id="section-title">LIVE EVENTS</h2>
+        <div class="section-line"></div>
+      </div>
+      <div id="events-grid" class="events-grid"></div>
+    </section>
+
+    <!-- IPL Points Table -->
+    <section id="table-section" class="hidden">
+      <div class="section-header">
+        <h2 class="section-title">IPL 2026 POINTS TABLE</h2>
+        <div class="section-line"></div>
+      </div>
+      <div id="ipl-table-wrap"></div>
+    </section>
+
+  </main>
+
+  <!-- Event Modal -->
+  <div id="event-modal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+      <div class="modal-header">
+        <span class="modal-sport-badge" id="modal-sport-badge">Cricket</span>
+        <span class="modal-status" id="modal-status-badge">LIVE</span>
+      </div>
+      <h2 id="modal-title">Match Title</h2>
+      <div class="modal-meta" id="modal-meta"></div>
+
+      <div class="scorecard-area" id="scorecard-area"></div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Score Ticker -->
+  <div id="score-ticker-bar">
+    <div class="ticker-label">LIVE</div>
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="src/data.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
